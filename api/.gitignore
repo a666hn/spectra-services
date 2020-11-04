@@ -1,0 +1,4 @@
+graph/**/generated.go
+
+*.sum
+.env

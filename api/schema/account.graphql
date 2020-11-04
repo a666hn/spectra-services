@@ -1,0 +1,119 @@
+type AccountQuery {
+    getAccount(filter: GetAccountRequest!): AccountResponse!
+    getPaginationAccounts(filter: GetPaginationAccount!): AccountPaginationResponse!
+}
+
+type AccountMutation {
+    addAccount(in: AddAccountRequest!): AccountMessageResponse!
+    updateAccount(in: UpdateAccountRequest!): AccountMessageResponse!
+    softDeleteAccount(in: DeleteAccountRequest!): AccountMessageResponse!
+    hardDeleteAccount(in: DeleteAccountRequest!): AccountMessageResponse!
+}
+
+type AccountInfo {
+    fullname: String!
+    nickname: String!
+    username: String!
+    email: String!
+    phoneNumber: String!
+}
+
+type OptionStruct {
+    id: String!
+    name: String!
+}
+
+type AccountAddress {
+    province: OptionStruct!
+    city: OptionStruct!
+    district: OptionStruct!
+    village: String!
+    street: String!
+    zipCode: String!
+}
+
+type AccountData {
+    id: String!
+    firstname: String!
+    lastname: String!
+    accountInfo: AccountInfo!
+    accountAddress: AccountAddress!
+    createdAt: String!
+    updateAt: String!
+    createdBy: String!
+    updatedBy: String!
+}
+
+type Pagination {
+    page: Int!
+    perpage: Int!
+}
+
+# Request Type Account
+input AddAccountRequest {
+    firstname: String!
+    lastname: String!
+    nickname: String!
+    username: String!
+    password: String!
+    email: String!
+    phoneNumber: String!
+}
+
+input UpdateAccountRequest {
+    firstname: String!
+    lastname: String!
+    nickname: String!
+    username: String!
+    password: String!
+    email: String!
+    phoneNumber: String!
+    provinceid: String!
+    provincename: String!
+    cityid: String!
+    cityname: String!
+    districtid: String!
+    districtname: String!
+    village: String!
+    street: String!
+    zipCode: String!
+}
+
+input GetAccountRequest {
+    id: String!
+    fullname: String!
+    nickname: String!
+    username: String!
+}
+
+input GetPaginationAccount {
+    id: String!
+    fullname: String!
+    nickname: String!
+    username: String!
+    page: Int!
+    perpage: Int!
+}
+
+input DeleteAccountRequest {
+    id: String!
+}
+
+# Response Type Account
+type AccountResponse {
+    account: AccountData!
+    accounts: [AccountData]!
+}
+
+type AccountPaginationResponse {
+    page: Int!
+    perpage: Int!
+    totalPage: Int!
+    maxPage: Int!
+    accounts: [AccountData]!
+}
+
+type AccountMessageResponse {
+    id: String!
+    message: String!
+}

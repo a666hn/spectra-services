@@ -1,0 +1,7 @@
+type Query {
+    account: AccountQuery!
+}
+
+type Mutation {
+    account: AccountMutation!
+}
