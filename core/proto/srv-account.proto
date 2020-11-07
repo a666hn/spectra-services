@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+import "proto/account.proto";
+
+package proto;
+
+service AccountServices {
+    rpc GetAccount(GetAccountRequest) returns (AccountResponse) {}
+    rpc GetPaginationAccounts(GetPaginationAccount) returns (AccountPaginationResponse) {}
+    rpc AddAccount(AddAccountRequest) returns (AccountMessageResponse) {}
+    rpc UpdateAccount(UpdateAccountRequest) returns (AccountMessageResponse) {}
+    rpc SoftDeleteAccount(DeleteAccountRequest) returns (AccountMessageResponse) {}
+    rpc HardDeleteAccount(DeleteAccountRequest) returns (AccountMessageResponse) {}
+}

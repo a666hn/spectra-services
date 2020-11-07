@@ -1,0 +1,5 @@
+**/*/*.pb.go
+**/*/*.pb.micro.go
+
+*.sum
+.env
