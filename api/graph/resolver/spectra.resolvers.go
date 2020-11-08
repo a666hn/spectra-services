@@ -5,18 +5,17 @@ package resolver
 
 import (
 	"context"
-	"fmt"
 
 	generated "github.com/skinnyguy/spectra-services/api/graph"
 	"github.com/skinnyguy/spectra-services/api/graph/model"
 )
 
 func (r *mutationResolver) Account(ctx context.Context) (*model.AbstractModel, error) {
-	panic(fmt.Errorf("not implemented"))
+	return new(model.AbstractModel), nil
 }
 
 func (r *queryResolver) Account(ctx context.Context) (*model.AbstractModel, error) {
-	panic(fmt.Errorf("not implemented"))
+	return new(model.AbstractModel), nil
 }
 
 // Mutation returns generated.MutationResolver implementation.
