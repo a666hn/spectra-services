@@ -9,10 +9,16 @@ import (
 
 	generated "github.com/skinnyguy/spectra-services/api/graph"
 	"github.com/skinnyguy/spectra-services/api/graph/model"
+	services "github.com/skinnyguy/spectra-services/api/services"
 )
 
 func (r *accountMutationResolver) AddAccount(ctx context.Context, obj *model.AbstractModel, in model.AddAccountRequest) (*model.AccountMessageResponse, error) {
-	panic(fmt.Errorf("not implemented"))
+	account, err := services.AddAccount(ctx, in)
+	if err != nil {
+		return nil, err
+	}
+
+	return account, nil
 }
 
 func (r *accountMutationResolver) UpdateAccount(ctx context.Context, obj *model.AbstractModel, in model.UpdateAccountRequest) (*model.AccountMessageResponse, error) {

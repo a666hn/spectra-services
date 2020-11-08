@@ -1,9 +1,9 @@
 package utils
 
 import (
-	// "crypto/sha256"
+	"crypto/sha256"
 	// "database/sql"
-	// "encoding/hex"
+	"encoding/hex"
 	"os"
 	"strconv"
 	"sync"
@@ -12,6 +12,7 @@ import (
 	"github.com/jinzhu/copier"
 	"github.com/micro/go-micro/errors"
 	"github.com/micro/go-micro/util/log"
+	uuid "github.com/satori/go.uuid"
 
 	appConfig "github.com/skinnyguy/spectra-services/core/config"
 	connection "github.com/skinnyguy/spectra-services/core/connection"
@@ -119,6 +120,12 @@ func StringToFloat64(input string) (float64, error) {
 	return float64(result), nil
 }
 
+// GenerateUUID ...
+func GenerateUUID() string {
+	uid := uuid.NewV4()
+	return uid.String()
+}
+
 // CopyObject ...
 func CopyObject(from interface{}, to interface{}) error {
 	if from == nil {
@@ -143,6 +150,11 @@ func SendLogInfo(msg ...string) {
 // SendLogDebug ...
 func SendLogDebug(msg ...string) {
 	log.Debug(msg)
+}
+
+func GetHashPassword(password string) string {
+	shaSUM := sha256.Sum256([]byte(password))
+	return hex.EncodeToString(shaSUM[:])
 }
 
 var (

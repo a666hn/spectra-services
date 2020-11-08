@@ -21,6 +21,7 @@ CREATE TABLE public.accounts (
 	created_by varchar NULL,
 	updated_by varchar NULL,
 	family_org_id uuid NOT NULL,
+	"role" uuid NULL,
 	CONSTRAINT account_id_pk PRIMARY KEY (id),
 	CONSTRAINT accounts_unique_key UNIQUE (username, email, phone_number)
 );
@@ -30,6 +31,7 @@ CREATE INDEX accounts_fullname_idx ON public.accounts USING btree (fullname, use
 -- public.accounts foreign keys
 
 ALTER TABLE public.accounts ADD CONSTRAINT accounts_fk FOREIGN KEY (id) REFERENCES family_org(id) ON UPDATE SET NULL ON DELETE SET NULL;
+ALTER TABLE public.accounts ADD CONSTRAINT accounts_fk_role FOREIGN KEY (role) REFERENCES roles(id) ON UPDATE SET NULL ON DELETE SET NULL;
 
 -- Generate Account Address Tables
 
