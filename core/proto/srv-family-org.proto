@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+import "proto/family-org.proto";
+
+package proto;
+
+service OrganizationFamily {
+    // Get RPC
+    rpc GetOrganizationFamily(InputGetPaginationFamily) returns (FamilyMultiResponse) {}
+    // Mutation RPC
+    rpc AddOrganizationFamily(InputAddFamilyRequest) returns (FamilyResponseWithMessage) {}
+}

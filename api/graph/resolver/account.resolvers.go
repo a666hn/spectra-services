@@ -9,7 +9,7 @@ import (
 
 	generated "github.com/skinnyguy/spectra-services/api/graph"
 	"github.com/skinnyguy/spectra-services/api/graph/model"
-	services "github.com/skinnyguy/spectra-services/api/services"
+	"github.com/skinnyguy/spectra-services/api/services"
 )
 
 func (r *accountMutationResolver) AddAccount(ctx context.Context, obj *model.AbstractModel, in model.AddAccountRequest) (*model.AccountMessageResponse, error) {

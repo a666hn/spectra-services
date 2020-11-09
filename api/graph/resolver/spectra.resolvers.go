@@ -14,7 +14,15 @@ func (r *mutationResolver) Account(ctx context.Context) (*model.AbstractModel, e
 	return new(model.AbstractModel), nil
 }
 
+func (r *mutationResolver) Family(ctx context.Context) (*model.AbstractModel, error) {
+	return new(model.AbstractModel), nil
+}
+
 func (r *queryResolver) Account(ctx context.Context) (*model.AbstractModel, error) {
+	return new(model.AbstractModel), nil
+}
+
+func (r *queryResolver) Family(ctx context.Context) (*model.AbstractModel, error) {
 	return new(model.AbstractModel), nil
 }
 

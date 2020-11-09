@@ -9,6 +9,10 @@ import (
 
 type Repository interface {
 	AddAccountQuery(data *core.AddAccountRequest) (string, error)
+
+	// Organization Family Query
+	AddOrganizationFamilyQuery(data *core.InputAddFamilyRequest) (string, error)
+	GetOrganizationFamilyQuery(data *core.InputGetPaginationFamily) ([][]string, error)
 }
 
 type AbstractRepository struct {

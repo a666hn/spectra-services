@@ -16,6 +16,8 @@ const GoMicroPrefix string = "go.micro.srv."
 const (
 	// Account service ...
 	AccountService = GoMicroPrefix + "account.service"
+	// Organization Family service ...
+	OrganizationFamilyService = GoMicroPrefix + "organization-family.service"
 )
 
 func getClientOptions() []client.Option {
@@ -44,4 +46,19 @@ func GetAccountService() service.AccountServicesService {
 	})
 
 	return accountService
+}
+
+var (
+	orgOne     sync.Once
+	orgService service.OrganizationFamilyService
+)
+
+// GetOrganizationFamilyService ...
+func GetOrganizationFamilyService() service.OrganizationFamilyService {
+	orgOne.Do(func() {
+		options := getClientOptions()
+		orgService = service.NewOrganizationFamilyService(OrganizationFamilyService, grpcclient.NewClient(options...))
+	})
+
+	return orgService
 }

@@ -45,6 +45,11 @@ type User struct {
 	Role        string
 }
 
+type QueryPagination struct {
+	Page    int32
+	Perpage int32
+}
+
 var (
 	UserData = User{
 		ID:          "id",
@@ -124,6 +129,11 @@ func StringToFloat64(input string) (float64, error) {
 func GenerateUUID() string {
 	uid := uuid.NewV4()
 	return uid.String()
+}
+
+// IsUsePagination ...
+func IsUsePagination(q *QueryPagination) bool {
+	return q.Page > 0 && q.Perpage > 0
 }
 
 // CopyObject ...
