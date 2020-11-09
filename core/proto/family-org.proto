@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package proto;
+
+message InputAddFamilyRequest {
+    string name = 1;
+    string identityNumber = 2;
+    bool status = 3;
+}
+
+message InputGetPaginationFamily {
+    int32 page = 1;
+    int32 perpage = 2;
+    string ID = 3;
+    string name = 4;
+    string identityNumber = 5;
+    bool status = 6;
+    string createdAt = 7;
+}
+
+message FamilyData {
+    string ID = 1;
+    string name = 2;
+    string identityNumber = 3;
+    bool status = 4;
+    string createdAt = 5;
+    string updatedAt = 6;
+}
+
+message FamilySingleResponse {
+    FamilyData orgFamily = 1;
+}
+
+message FamilyMultiResponse {
+    int32 page = 1;
+    int32 totalPage = 2;
+    int32 totalDocs = 3;
+    repeated FamilyData orgFamilys = 4;
+}
+
+message FamilyResponseWithMessage {
+    string ID = 1;
+    string message = 2;
+}

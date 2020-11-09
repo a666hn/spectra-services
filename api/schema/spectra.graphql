@@ -1,7 +1,9 @@
 type Query {
     account: AccountQuery!
+    family: FamilyQuery!
 }
 
 type Mutation {
     account: AccountMutation!
+    family: FamilyMutation!
 }
