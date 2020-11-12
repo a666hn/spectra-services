@@ -19,7 +19,7 @@ const (
 	// Organization Family service ...
 	OrganizationFamilyService = GoMicroPrefix + "organization-family.service"
 	// Role service ...
-	RoleService = GoMicroPrefix + "role.service"
+	PrivilegeService = GoMicroPrefix + "privileges.service"
 )
 
 func getClientOptions() []client.Option {
@@ -66,16 +66,16 @@ func GetOrganizationFamilyService() service.OrganizationFamilyService {
 }
 
 var (
-	roleOne     sync.Once
-	roleService service.RoleService
+	privilegeOnce    sync.Once
+	privilegeService service.PrivilegeService
 )
 
 // GetRoleService ...
-func GetRoleService() service.RoleService {
-	roleOne.Do(func() {
+func GetPrivilegeService() service.PrivilegeService {
+	privilegeOnce.Do(func() {
 		options := getClientOptions()
-		roleService = service.NewRoleService(RoleService, grpcclient.NewClient(options...))
+		privilegeService = service.NewPrivilegeService(PrivilegeService, grpcclient.NewClient(options...))
 	})
 
-	return roleService
+	return privilegeService
 }

@@ -1,8 +1,10 @@
-type RoleQuery {
+type PrivilegeQuery {
+    # Role Section Query
     getListRole(request: GetPaginationRoleRequest!): RoleMultiResponse!
 }
 
-type RoleMutation {
+type PrivilegeMutation {
+    # Role Section Mutation
     addRole(request: InputRole!): RoleResponseWithMessage!
     updateRole(id: String!, name: String!, description: String!): RoleResponseWithMessage!
     deleteRole(id: String!): RoleResponseWithMessage!
@@ -13,9 +15,11 @@ type ResponseWithMessage {
     message: String!
 }
 
-# Role Section
+#   ==================  #
+#   | Request Section   #
+#   \================   #
 
-# Role Request
+# Role Request Type
 type RoleData {
     id: String!
     role: String!
@@ -38,7 +42,11 @@ input GetPaginationRoleRequest {
     name: String!
 }
 
-# Role Response
+#   ===================  #
+#   | Response Section   #
+#   \=================   #
+
+# Role Response Type
 type OptionRoleResponse {
     results: [OptionRoleData!]!
 }

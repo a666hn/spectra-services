@@ -1,5 +1,9 @@
 package query
 
+/*	==========================	*/
+//	Part of Privilege Services	//
+/*	==========================	*/
+
 import (
 	f "fmt"
 

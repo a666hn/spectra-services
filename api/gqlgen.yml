@@ -52,7 +52,7 @@ models:
     model: github.com/skinnyguy/spectra-services/api/graph/model.AbstractModel
   FamilyMutation:
     model: github.com/skinnyguy/spectra-services/api/graph/model.AbstractModel
-  RoleQuery:
+  PrivilegeQuery:
     model: github.com/skinnyguy/spectra-services/api/graph/model.AbstractModel
-  RoleMutation:
+  PrivilegeMutation:
     model: github.com/skinnyguy/spectra-services/api/graph/model.AbstractModel

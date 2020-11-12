@@ -4,11 +4,19 @@ import "proto/role.proto";
 
 package proto;
 
-service Role {
-    // Query
+service Privilege {
+    /*  ==============    */
+    //  Query Services    //
+    /*  ==============    */
+
+    // Role Section
     rpc GetListRole(GetPaginationRoleRequest) returns (RoleMultiResponse) {}
 
-    // Mutation
+    /*  =================    */
+    //  Mutation Services    //
+    /*  =================    */
+
+    // Role Section
     rpc AddRole(InputRole) returns (RoleResponseWithMessage) {}
     rpc UpdateRole(InputUpdateRole) returns (RoleResponseWithMessage) {}
     rpc DeleteRole(InputDeleteRole) returns (RoleResponseWithMessage) {}
