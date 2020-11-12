@@ -2,10 +2,11 @@ package utils
 
 import (
 	"crypto/sha256"
-	// "database/sql"
+	"database/sql"
 	"encoding/hex"
 	"os"
 	"strconv"
+	"strings"
 	"sync"
 	"time"
 
@@ -162,9 +163,25 @@ func SendLogDebug(msg ...string) {
 	log.Debug(msg)
 }
 
+// GetHashPassword ...
 func GetHashPassword(password string) string {
 	shaSUM := sha256.Sum256([]byte(password))
 	return hex.EncodeToString(shaSUM[:])
+}
+
+// Uppercase ...
+func Uppercase(text string) string {
+	return strings.ToUpper(text)
+}
+
+// Lowercase ...
+func Lowercase(text string) string {
+	return strings.ToLower(text)
+}
+
+// ReplaceCharacter ...
+func ReplaceCharacter(text, oldPattern, newPattern string) string {
+	return strings.ReplaceAll(text, oldPattern, newPattern)
 }
 
 var (
@@ -188,4 +205,42 @@ func GetDatasourceInfo() string {
 	}
 
 	return Postgres
+}
+
+// ConvertSQLRowsToCSV ...
+func ConvertSQLRowsToCSV(rows *sql.Rows) (results [][]string) {
+	cols, err := rows.Columns()
+	if err != nil {
+		log.Info("Failed to get columns...", err)
+		return
+	}
+
+	rawResult := make([][]byte, len(cols))
+	results = append(results, []string{"HEADER"})
+
+	dest := make([]interface{}, len(cols))
+	for i := range rawResult {
+		dest[i] = &rawResult[i]
+	}
+
+	for rows.Next() {
+		var result []string
+		err = rows.Scan(dest...)
+		if err != nil {
+			log.Info("Failed to scan row", err)
+			return
+		}
+
+		for _, raw := range rawResult {
+			if raw == nil {
+				result = append(result, "")
+			} else {
+				result = append(result, string(raw))
+			}
+		}
+
+		results = append(results, result)
+	}
+
+	return results
 }

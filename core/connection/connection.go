@@ -2,13 +2,9 @@ package connection
 
 import (
 	"database/sql"
-	// "encoding/csv"
-	// "encoding/json"
 	"fmt"
 	"os"
 	"strconv"
-
-	// "strings"
 	"time"
 
 	"github.com/jmoiron/sqlx"
@@ -44,7 +40,7 @@ func (connection *connection) ExecuteDBQuery(qapi string) ([][]string, error) {
 	rows, errConnection := connection.db.Query(qapi)
 
 	if errConnection == nil {
-		records = convertToCsv(rows)
+		records = convertRowsToCsv(rows)
 	}
 
 	if errConnection != nil {
@@ -70,7 +66,8 @@ func (connection *connection) DB() *sqlx.DB {
 	return connection.db
 }
 
-func convertToCsv(rows *sql.Rows) (results [][]string) {
+// convertRowsToCsv ...
+func convertRowsToCsv(rows *sql.Rows) (results [][]string) {
 	cols, err := rows.Columns()
 	if err != nil {
 		log.Info("Failed to get columns", err)

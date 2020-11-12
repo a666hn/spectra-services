@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package proto;
+
+message InputRole {
+    string name = 1;
+    string description = 2;
+}
+
+message InputUpdateRole {
+    string ID = 1;
+    string name = 2;
+    string description = 3;
+}
+
+message InputDeleteRole {
+    string ID = 1;
+}
+
+message RoleData {
+    string ID = 1;
+    string role = 2;
+    string description = 3;
+}
+
+message OptionRoleData {
+    string value = 1;
+    string label = 2;
+}
+
+message GetPaginationRoleRequest {
+    int32 page = 1;
+    int32 perpage = 2;
+    string name = 3;
+}
+
+message ResponseWithMessage {
+    string ID = 1;
+    string message = 2;
+}
+
+// Response
+message OptionRoleResponse {
+    repeated OptionRoleData result = 1;
+}
+
+message RoleResponseWithMessage {
+    ResponseWithMessage result = 1;
+}
+
+message RoleMultiResponse {
+    int32 page = 1;
+    int32 perpage = 2;
+    int32 totalPage = 3;
+    int32 maxPage = 4;
+    repeated RoleData results = 5;
+}
