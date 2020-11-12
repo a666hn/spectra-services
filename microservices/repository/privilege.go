@@ -52,9 +52,9 @@ func (ar *AbstractRepository) UpdateRole(data *cp.InputUpdateRole) (*cp.Response
 // DeleteRole ...
 func (ar *AbstractRepository) DeleteRole(data *cp.InputDeleteRole) (*cp.ResponseWithMessage, error) {
 	var (
-		result  *cp.ResponseWithMessage
-		uuid string
-		err     error
+		result *cp.ResponseWithMessage
+		uuid   string
+		err    error
 
 		errText = "Service.Role.err"
 	)

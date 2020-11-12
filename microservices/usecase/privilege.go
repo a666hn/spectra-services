@@ -6,11 +6,13 @@ import (
 	v "github.com/skinnyguy/spectra-services/core/validation"
 )
 
-var roleUseCasePrefix = "Role UseCase: "
+var (
+	priviligeUseCasePrefix = "Privileges UseCase:"
+)
 
 // AddRole ...
 func (uc *UseCase) AddRole(data *cp.InputRole) (*cp.ResponseWithMessage, error) {
-	u.SendLogInfo(roleUseCasePrefix + "AddRole...")
+	u.SendLogInfo(priviligeUseCasePrefix + "AddRole...")
 	if err := v.ValidationInputRole(data); err != nil {
 		return nil, err
 	}
@@ -25,7 +27,7 @@ func (uc *UseCase) AddRole(data *cp.InputRole) (*cp.ResponseWithMessage, error) 
 
 // UpdateRole ...
 func (uc *UseCase) UpdateRole(data *cp.InputUpdateRole) (*cp.ResponseWithMessage, error) {
-	u.SendLogInfo(roleUseCasePrefix + "UpdateRole...")
+	u.SendLogInfo(priviligeUseCasePrefix + "UpdateRole...")
 	if err := v.ValidationInputUpdateRole(data); err != nil {
 		return nil, err
 	}
@@ -40,7 +42,7 @@ func (uc *UseCase) UpdateRole(data *cp.InputUpdateRole) (*cp.ResponseWithMessage
 
 // DeleteRole ...
 func (uc *UseCase) DeleteRole(data *cp.InputDeleteRole) (*cp.ResponseWithMessage, error) {
-	u.SendLogInfo(roleUseCasePrefix + "DeleteRole...")
+	u.SendLogInfo(priviligeUseCasePrefix + "DeleteRole...")
 	if err := v.ValidationInputDeleteRole(data); err != nil {
 		return nil, err
 	}
@@ -55,7 +57,7 @@ func (uc *UseCase) DeleteRole(data *cp.InputDeleteRole) (*cp.ResponseWithMessage
 
 // GetListRole ...
 func (uc *UseCase) GetListRole(data *cp.GetPaginationRoleRequest) ([]*cp.RoleData, error) {
-	u.SendLogInfo(roleUseCasePrefix + "GetListRole")
+	u.SendLogInfo(priviligeUseCasePrefix + "GetListRole")
 
 	roles, err := uc.repository.GetListRole(data)
 	if err != nil {

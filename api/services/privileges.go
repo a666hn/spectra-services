@@ -10,19 +10,23 @@ import (
 )
 
 var (
-	spectraRoleService = "Spectra.api.services."
+	spectraPrivilegeService = "Spectra.api.GroupPrivilege.services."
 )
+
+/*	=====================	*/
+//	Role Section Services	//
+/*	=====================	*/
 
 // AddRole ...
 func AddRole(ctx context.Context, data am.InputRole) (result *am.RoleResponseWithMessage, err error) {
-	u.SendLogInfo(spectraRoleService + "AddRole")
+	u.SendLogInfo(spectraPrivilegeService + "AddRole")
 
 	request := new(cp.InputRole)
 	if err := u.CopyObject(data, &request); err != nil {
 		return nil, err
 	}
 
-	service := cl.GetRoleService()
+	service := cl.GetPrivilegeService()
 	response, err := service.AddRole(
 		ctx,
 		request,
@@ -40,14 +44,14 @@ func AddRole(ctx context.Context, data am.InputRole) (result *am.RoleResponseWit
 
 // UpdateRole ...
 func UpdateRole(ctx context.Context, id, name, description string) (result *am.RoleResponseWithMessage, err error) {
-	u.SendLogInfo(spectraRoleService + "UpdateRole")
+	u.SendLogInfo(spectraPrivilegeService + "UpdateRole")
 
 	request := new(cp.InputUpdateRole)
 	request.ID = id
 	request.Name = name
 	request.Description = description
 
-	service := cl.GetRoleService()
+	service := cl.GetPrivilegeService()
 	response, err := service.UpdateRole(
 		ctx,
 		request,
@@ -65,12 +69,12 @@ func UpdateRole(ctx context.Context, id, name, description string) (result *am.R
 
 // DeleteRole ...
 func DeleteRole(ctx context.Context, id string) (result *am.RoleResponseWithMessage, err error) {
-	u.SendLogInfo(spectraRoleService + "DeleteRole")
+	u.SendLogInfo(spectraPrivilegeService + "DeleteRole")
 
 	request := new(cp.InputDeleteRole)
 	request.ID = id
 
-	service := cl.GetRoleService()
+	service := cl.GetPrivilegeService()
 	response, err := service.DeleteRole(
 		ctx,
 		request,
@@ -88,14 +92,14 @@ func DeleteRole(ctx context.Context, id string) (result *am.RoleResponseWithMess
 
 // GetListRole ...
 func GetListRole(ctx context.Context, data am.GetPaginationRoleRequest) (result *am.RoleMultiResponse, err error) {
-	u.SendLogInfo(spectraRoleService + "GetListRole")
+	u.SendLogInfo(spectraPrivilegeService + "GetListRole")
 
 	request := new(cp.GetPaginationRoleRequest)
 	if err := u.CopyObject(data, &request); err != nil {
 		return nil, err
 	}
 
-	service := cl.GetRoleService()
+	service := cl.GetPrivilegeService()
 	response, err := service.GetListRole(
 		ctx,
 		request,
