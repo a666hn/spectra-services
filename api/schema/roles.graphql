@@ -1,0 +1,56 @@
+type RoleQuery {
+    getListRole(request: GetPaginationRoleRequest!): RoleMultiResponse!
+}
+
+type RoleMutation {
+    addRole(request: InputRole!): RoleResponseWithMessage!
+    updateRole(id: String!, name: String!, description: String!): RoleResponseWithMessage!
+    deleteRole(id: String!): RoleResponseWithMessage!
+}
+
+type ResponseWithMessage {
+    id: String!
+    message: String!
+}
+
+# Role Section
+
+# Role Request
+type RoleData {
+    id: String!
+    role: String!
+    description: String!
+}
+
+type OptionRoleData {
+    value: String!
+    label: String!
+}
+
+input InputRole {
+    name: String!
+    description: String!
+}
+
+input GetPaginationRoleRequest {
+    page: Int
+    perpage: Int
+    name: String!
+}
+
+# Role Response
+type OptionRoleResponse {
+    results: [OptionRoleData!]!
+}
+
+type RoleResponseWithMessage {
+    result: ResponseWithMessage!
+}
+
+type RoleMultiResponse {
+    page: Int
+    perpage: Int
+    totalPage: Int
+    maxPage: Int
+    results: [RoleData!]!
+}

@@ -13,6 +13,12 @@ type Repository interface {
 	// Organization Family Query
 	AddOrganizationFamilyQuery(data *core.InputAddFamilyRequest) (string, error)
 	GetOrganizationFamilyQuery(data *core.InputGetPaginationFamily) ([][]string, error)
+
+	// Role Function Services
+	AddRoleQuery(data *core.InputRole) (string, error)
+	UpdateRoleQuery(data *core.InputUpdateRole) (string, error)
+	DeleteRoleQuery(data *core.InputDeleteRole) (string, error)
+	GetListRoleQuery(data *core.GetPaginationRoleRequest) ([][]string, error)
 }
 
 type AbstractRepository struct {
