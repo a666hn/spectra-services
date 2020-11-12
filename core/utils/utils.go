@@ -14,6 +14,7 @@ import (
 	"github.com/micro/go-micro/errors"
 	"github.com/micro/go-micro/util/log"
 	uuid "github.com/satori/go.uuid"
+	"golang.org/x/crypto/bcrypt"
 
 	appConfig "github.com/skinnyguy/spectra-services/core/config"
 	connection "github.com/skinnyguy/spectra-services/core/connection"
@@ -38,6 +39,8 @@ const (
 	Float32 = 32
 	// Float type 64
 	Float64 = 64
+	// Cast for generate password
+	Cast = 14
 )
 
 type User struct {
@@ -167,6 +170,19 @@ func SendLogDebug(msg ...string) {
 func GetHashPassword(password string) string {
 	shaSUM := sha256.Sum256([]byte(password))
 	return hex.EncodeToString(shaSUM[:])
+}
+
+// HashPassword ...
+func HashPassword(password string) (string, error) {
+	var pass = []byte(password)
+	bytes, err := bcrypt.GenerateFromPassword(pass, Cast)
+	return string(bytes), err
+}
+
+// ComparePassword ...
+func ComparePassword(password, hash string) bool {
+	err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))
+	return err == nil
 }
 
 // Uppercase ...
