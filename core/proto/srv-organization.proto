@@ -5,7 +5,7 @@ import "proto/organization.proto";
 package proto;
 
 message MessageResponse {
-    string orgID = 1;
+    string ID = 1;
     string message = 2;
 }
 
@@ -16,7 +16,7 @@ message ResponseMessage {
 service SpectraOrganization {
     // Organization Query
     rpc GetOrganization(InputOraganizationPagination) returns (OrganizationMultiResponse) {}
-    rpc GetDetailOrganization(OrganizationDefaultRequest) returns (OrganizationData) {}
+    rpc GetDetailOrganization(OrganizationDefaultRequest) returns (OrganizationSingleResponse) {}
 
     // Organization Mutation
     rpc AddOrganization(InputOrganization) returns (ResponseMessage) {}
