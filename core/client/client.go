@@ -16,6 +16,8 @@ const GoMicroPrefix string = "go.micro.srv."
 const (
 	// Role service ...
 	PrivilegeService = GoMicroPrefix + "privileges.service"
+	// Organization service ...
+	OrganizationService = GoMicroPrefix + "organization.service"
 )
 
 func getClientOptions() []client.Option {
@@ -44,4 +46,19 @@ func GetPrivilegeService() service.PrivilegeService {
 	})
 
 	return privilegeService
+}
+
+var (
+	organizationOnce    sync.Once
+	organizationService service.SpectraOrganizationService
+)
+
+// GetRoleService ...
+func GetOrganizationService() service.SpectraOrganizationService {
+	organizationOnce.Do(func() {
+		options := getClientOptions()
+		organizationService = service.NewSpectraOrganizationService(OrganizationService, grpcclient.NewClient(options...))
+	})
+
+	return organizationService
 }

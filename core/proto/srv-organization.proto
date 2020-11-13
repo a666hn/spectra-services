@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+import "proto/organization.proto";
+
+package proto;
+
+message MessageResponse {
+    string orgID = 1;
+    string message = 2;
+}
+
+message ResponseMessage {
+    MessageResponse result = 1;
+}
+
+service SpectraOrganization {
+    // Organization Query
+    rpc GetOrganization(InputOraganizationPagination) returns (OrganizationMultiResponse) {}
+    rpc GetDetailOrganization(OrganizationDefaultRequest) returns (OrganizationData) {}
+
+    // Organization Mutation
+    rpc AddOrganization(InputOrganization) returns (ResponseMessage) {}
+    rpc UpdateOrganization(InputUpdateOrganization) returns (ResponseMessage) {}
+}
