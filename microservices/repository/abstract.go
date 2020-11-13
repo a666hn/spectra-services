@@ -12,6 +12,9 @@ type Repository interface {
 	UpdateRoleQuery(data *cp.InputUpdateRole) (string, error)
 	DeleteRoleQuery(data *cp.InputDeleteRole) (string, error)
 	GetListRoleQuery(data *cp.GetPaginationRoleRequest) ([][]string, error)
+
+	// Organization Function Services
+	AddOrganizationQuery(data *cp.InputOrganization) (string, string, error)
 }
 
 type AbstractRepository struct {

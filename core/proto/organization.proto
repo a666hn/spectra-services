@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package proto;
+
+message OrganizationDefaultRequest {
+    string orgID = 1;
+}
+
+message InputOrganization {
+    string orgName = 1;
+    string identitynumber = 2;
+    string owner = 3;
+    string phone = 4;
+    string lat = 5;
+    string lng = 6;
+    string country = 7;
+}
+
+message InputUpdateOrganization {
+    string orgName = 1;
+    string identitynumber = 2;
+    string phone = 3;
+    string lat = 4;
+    string lng = 5;
+    string country = 6;
+}
+
+message InputOraganizationPagination {
+    int32 page = 1;
+    int32 perpage = 2;
+    string orgID = 3;
+    string orgName = 4;
+    string identitynumber = 5;
+    string owner = 6;
+    string lat = 7;
+    string lng = 8;
+    string country = 9;
+}
+
+message OrganizationData {
+    string orgID = 1;
+    string identitynumber = 2;
+    string owner = 3;
+    string phone = 4;
+    string lat = 5;
+    string lng = 6;
+    string country = 7;
+    string createdAt = 8;
+    string updatedAt = 9;
+}
+
+message OrganizationMultiResponse {
+    int32 page = 1;
+    int32 perpage = 2;
+    int32 totalDocument = 3;
+    string message = 4;
+    repeated OrganizationData results = 5;
+}
