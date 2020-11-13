@@ -1,11 +1,9 @@
 type Query {
-    account: AccountQuery!
-    family: FamilyQuery!
     privileges: PrivilegeQuery!
+    organization: OrganizationQuery!
 }
 
 type Mutation {
-    account: AccountMutation!
-    family: FamilyMutation!
     privileges: PrivilegeMutation!
+    organization: OrganizationMutation!
 }
