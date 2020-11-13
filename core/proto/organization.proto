@@ -17,12 +17,13 @@ message InputOrganization {
 }
 
 message InputUpdateOrganization {
-    string orgName = 1;
-    string identitynumber = 2;
-    string phone = 3;
-    string lat = 4;
-    string lng = 5;
-    string country = 6;
+    string orgID = 1;
+    string orgName = 2;
+    string identitynumber = 3;
+    string phone = 4;
+    string lat = 5;
+    string lng = 6;
+    string country = 7;
 }
 
 message InputOraganizationPagination {
@@ -39,14 +40,16 @@ message InputOraganizationPagination {
 
 message OrganizationData {
     string orgID = 1;
-    string identitynumber = 2;
-    string owner = 3;
-    string phone = 4;
-    string lat = 5;
-    string lng = 6;
-    string country = 7;
-    string createdAt = 8;
-    string updatedAt = 9;
+    string orgName = 2;
+    string identitynumber = 3;
+    string owner = 4;
+    bool isActive = 5;
+    string phone = 6;
+    string lat = 7;
+    string lng = 8;
+    string country = 9;
+    string createdAt = 10;
+    string updatedAt = 11;
 }
 
 message OrganizationMultiResponse {
@@ -55,4 +58,8 @@ message OrganizationMultiResponse {
     int32 totalDocument = 3;
     string message = 4;
     repeated OrganizationData results = 5;
+}
+
+message OrganizationSingleResponse {
+    OrganizationData result = 1;
 }

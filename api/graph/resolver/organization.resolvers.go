@@ -5,26 +5,46 @@ package resolver
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/skinnyguy/spectra-services/api/graph"
 	"github.com/skinnyguy/spectra-services/api/graph/model"
+	"github.com/skinnyguy/spectra-services/api/services"
 )
 
 func (r *organizationMutationResolver) AddOrganization(ctx context.Context, obj *model.AbstractModel, request *model.InputOrganization) (*model.OrganizationResponseWithMessage, error) {
-	panic(fmt.Errorf("not implemented"))
+	organization, err := services.AddOrganization(ctx, request)
+	if err != nil {
+		return nil, err
+	}
+
+	return organization, nil
 }
 
-func (r *organizationMutationResolver) UpdateOrganization(ctx context.Context, obj *model.AbstractModel, orgID string) (*model.OrganizationResponseWithMessage, error) {
-	panic(fmt.Errorf("not implemented"))
+func (r *organizationMutationResolver) UpdateOrganization(ctx context.Context, obj *model.AbstractModel, orgID string, request model.UpdateOrganization) (*model.OrganizationResponseWithMessage, error) {
+	organization, err := services.UpdateOrganization(ctx, orgID, request)
+	if err != nil {
+		return nil, err
+	}
+
+	return organization, nil
 }
 
 func (r *organizationQueryResolver) GetOrganization(ctx context.Context, obj *model.AbstractModel, request model.InputOrganizationPagination) (*model.OrganizationMultiResponse, error) {
-	panic(fmt.Errorf("not implemented"))
+	organization, err := services.GetOrganization(ctx, request)
+	if err != nil {
+		return nil, err
+	}
+
+	return organization, nil
 }
 
 func (r *organizationQueryResolver) GetDetailOrganization(ctx context.Context, obj *model.AbstractModel, orgID string) (*model.OrganizationData, error) {
-	panic(fmt.Errorf("not implemented"))
+	organization, err := services.GetDetailOraganization(ctx, orgID)
+	if err != nil {
+		return nil, err
+	}
+
+	return organization, nil
 }
 
 // OrganizationMutation returns graph.OrganizationMutationResolver implementation.

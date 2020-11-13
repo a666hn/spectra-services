@@ -14,7 +14,10 @@ type Repository interface {
 	GetListRoleQuery(data *cp.GetPaginationRoleRequest) ([][]string, error)
 
 	// Organization Function Services
+	GetOrganizationQuery(filter *cp.InputOraganizationPagination) ([][]string, error)
+	GetDetailOrganizationQuery(id string) ([][]string, error)
 	AddOrganizationQuery(data *cp.InputOrganization) (string, string, error)
+	UpdateOrganizationQuery(id string, data *cp.InputUpdateOrganization) (string, error)
 }
 
 type AbstractRepository struct {
