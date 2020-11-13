@@ -1,0 +1,74 @@
+type OrganizationQuery {
+    getOrganization(request: InputOrganizationPagination!): OrganizationMultiResponse!
+    getDetailOrganization(orgId: String!): OrganizationData!
+}
+
+type OrganizationMutation {
+    addOrganization(request: InputOrganization): OrganizationResponseWithMessage!
+    updateOrganization(orgId: String!): OrganizationResponseWithMessage!
+}
+
+#   ==================  #
+#   | Request Section   #
+#   \================   #
+
+# Organization type request
+input InputOrganization {
+    orgName: String!
+    identitynumber: String!
+    owner: String!
+    phone: String!
+    lat: String!
+    lng: String!
+    country: String!
+}
+
+input UpdateOrganization {
+    orgName: String!
+    identitynumber: String!
+    phone: String!
+    lat: String!
+    lng: String!
+    country: String!
+}
+
+input InputOrganizationPagination {
+    page: Int!
+    perpage: Int!
+    orgId: String!
+    orgName: String!
+    identitynumber: String!
+    owner: String!
+    lat: String!
+    lng: String!
+    country: String!
+}
+
+type OrganizationData {
+    orgId: String!
+    identitynumber: String!
+    owner: String!
+    phone: String!
+    lat: String!
+    lng: String!
+    country: String!
+    createdAt: String!
+    updatedAt: String!
+}
+
+#   ===================  #
+#   | Response Section   #
+#   \=================   #
+
+# Organization type response
+type OrganizationResponseWithMessage {
+    result: ResponseWithMessage!
+}
+
+type OrganizationMultiResponse {
+    page: Int!
+    perpage: Int!
+    totalDocument: Int!
+    message: String!
+    results: [OrganizationData!]!
+}

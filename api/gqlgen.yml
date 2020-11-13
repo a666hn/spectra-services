@@ -44,15 +44,11 @@ autobind: []
 # modelgen, the others will be allowed when binding to fields. Configure them to
 # your liking
 models:
-  AccountQuery:
-    model: github.com/skinnyguy/spectra-services/api/graph/model.AbstractModel
-  AccountMutation:
-    model: github.com/skinnyguy/spectra-services/api/graph/model.AbstractModel
-  FamilyQuery:
-    model: github.com/skinnyguy/spectra-services/api/graph/model.AbstractModel
-  FamilyMutation:
-    model: github.com/skinnyguy/spectra-services/api/graph/model.AbstractModel
   PrivilegeQuery:
     model: github.com/skinnyguy/spectra-services/api/graph/model.AbstractModel
   PrivilegeMutation:
+    model: github.com/skinnyguy/spectra-services/api/graph/model.AbstractModel
+  OrganizationQuery:
+    model: github.com/skinnyguy/spectra-services/api/graph/model.AbstractModel
+  OrganizationMutation:
     model: github.com/skinnyguy/spectra-services/api/graph/model.AbstractModel
