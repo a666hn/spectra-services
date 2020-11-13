@@ -14,10 +14,6 @@ import (
 const GoMicroPrefix string = "go.micro.srv."
 
 const (
-	// Account service ...
-	AccountService = GoMicroPrefix + "account.service"
-	// Organization Family service ...
-	OrganizationFamilyService = GoMicroPrefix + "organization-family.service"
 	// Role service ...
 	PrivilegeService = GoMicroPrefix + "privileges.service"
 )
@@ -34,36 +30,6 @@ func getClientOptions() []client.Option {
 /* ========================== */
 // Define all client services //
 /* ========================== */
-
-var (
-	accountOnce    sync.Once
-	accountService service.AccountServicesService
-)
-
-// GetAccountService ...
-func GetAccountService() service.AccountServicesService {
-	accountOnce.Do(func() {
-		options := getClientOptions()
-		accountService = service.NewAccountServicesService(AccountService, grpcclient.NewClient(options...))
-	})
-
-	return accountService
-}
-
-var (
-	orgOne     sync.Once
-	orgService service.OrganizationFamilyService
-)
-
-// GetOrganizationFamilyService ...
-func GetOrganizationFamilyService() service.OrganizationFamilyService {
-	orgOne.Do(func() {
-		options := getClientOptions()
-		orgService = service.NewOrganizationFamilyService(OrganizationFamilyService, grpcclient.NewClient(options...))
-	})
-
-	return orgService
-}
 
 var (
 	privilegeOnce    sync.Once
